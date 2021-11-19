@@ -9,11 +9,13 @@ public class PlayerMove : MonoBehaviour
     private bool Grounded;
     private Animator anim;
     private float LastShoot;
-    private int Health = 10;
+    [SerializeField]
+    int Health = 10;
 
     public GameObject BulletPrefab;
     public float Jumpforce;
     public float Speed;
+    Bullet currentBullet;
         
     void Start()
     {
@@ -85,7 +87,10 @@ public class PlayerMove : MonoBehaviour
         }
 
         GameObject bullet =  Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetDirection(direction);
+        currentBullet = bullet.GetComponent<Bullet>();
+        currentBullet.SetDirection(direction);
+        currentBullet.Actor = "Player";
+        currentBullet = null;
     }
 
     private void FixedUpdate()

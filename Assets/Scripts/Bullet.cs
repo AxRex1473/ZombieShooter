@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     private Vector2 Direction;
+    string actor;
 
     public float Speed;
 
@@ -30,21 +31,24 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public string Actor{get => actor; set => actor = value;}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMove player = collision.GetComponent<PlayerMove>();
-        Enemy enemy = collision.GetComponent<Enemy>();
-
-        if (player != null)
+        if(collision.CompareTag("Player") && actor == "Enemy")
         {
+            PlayerMove player = collision.GetComponent<PlayerMove>();
             player.Hit();
         }
-        if (enemy != null)
+        if(collision.CompareTag("Enemy") && actor == "Player")
         {
+            Enemy enemy = collision.GetComponent<Enemy>();
             enemy.Hit();
         }
-        DestroyBullet();
+        if(collision.tag != actor && collision.tag != "bullet")
+        {
+            DestroyBullet();
+        }
     }
 
-   
 }

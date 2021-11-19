@@ -4,28 +4,46 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    SpriteRenderer spr;
+
     public GameObject BulletP;
     public GameObject Player;
-
-    private int Health = 3;
+    [SerializeField]
+    int Health = 3;
     private float LastShoot;
+    [SerializeField]
+    float rayDistance;
+    [SerializeField]
+    Color rayColor;
+    [SerializeField]
+    LayerMask layer;
+    Bullet currentBullet;
+
+
+    void Awake()
+    {
+        spr = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
-        if(Player == null)
+        if(!Player)
         {
             return;  
         }
 
-        Vector3 direction = Player.transform.position - transform.position;
-        if (direction.x >= 0.0f)
+        //Vector3 direction = Player.transform.position - transform.position;
+        /*if (direction.x >= 0.0f)
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         else
         {
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        }
+        }*/
+
+        Debug.Log(FlipSpriteX);
+        spr.flipX = FlipSpriteX;
 
         float distance = (Player.transform.position.x - transform.position.x);
 
@@ -38,21 +56,23 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 direction;
+        //Vector3 direction;
 
-        if (transform.localScale.x == 1.0f)
+       /* if (transform.localScale.x == 1.0f)
         {
             direction = Vector2.right;
         }
         else 
         {
             direction = Vector2.left;
-        }
+        }*/
 
-        GameObject bullet = Instantiate(BulletP, transform.position + direction * 0.1f, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetDirection(direction);
-
-        Debug.Log("Shoot");
+        GameObject bullet = Instantiate(BulletP, postion2D + BulletDirection * 0.1f, Quaternion.identity);
+        currentBullet = bullet.GetComponent<Bullet>();
+        currentBullet.SetDirection(BulletDirection);
+        currentBullet.Actor = "Enemy";
+        currentBullet = null;
+        //Debug.Log("Shoot");
     }
 
     public void Hit()
@@ -64,6 +84,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = rayColor;
+        Gizmos.DrawRay(transform.position, Vector2.right * rayDistance);
+        Gizmos.DrawRay(transform.position, Vector2.left * rayDistance);
+    }
+
+    bool PlayerIsToTheLeft => Physics2D.Raycast(transform.position,  Vector2.left, rayDistance, layer);
+    bool PlayerIsToTheRight => Physics2D.Raycast(transform.position,  Vector2.right, rayDistance, layer);
+    bool FlipSpriteX => PlayerIsToTheLeft ? true : PlayerIsToTheRight ? false : spr.flipX;
+    Vector2 BulletDirection => spr.flipX ? Vector2.left : Vector2.right;
+    Vector2 postion2D => transform.position ;
 
 }

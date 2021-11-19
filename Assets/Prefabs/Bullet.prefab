@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4582455021963028082}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,6 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -118,7 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddcb163b9eee51429dd6363390190aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sound: {fileID: 8300000, guid: ca27cf2295a92cf45a77d8cb0453998d, type: 3}
   Speed: 3
 --- !u!50 &7180354193994067579
 Rigidbody2D:
