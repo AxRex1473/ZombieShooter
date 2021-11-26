@@ -12,8 +12,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        
+        rb2D = GetComponent<Rigidbody2D>();      
     }
 
     void Update()

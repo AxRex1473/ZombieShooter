@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         // Movimiento en Horizontal del player
         h = Input.GetAxisRaw("Horizontal");
 
-        // Según el lado al que se mueva el player tambien su posición
+        // Segï¿½n el lado al que se mueva el player tambien su posiciï¿½n
         if (h < 0.0f)
         {
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
@@ -38,10 +39,10 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
 
-        // Llamamos al animaator para hacer la animación de correr
+        // Llamamos al animaator para hacer la animaciï¿½n de correr
         anim.SetBool("Running", h != 0.0f);
 
-        // Dibujamos una linea para que sepa donde esta colisionando después del salto 
+        // Dibujamos una linea para que sepa donde esta colisionando despuï¿½s del salto 
         Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);
         if(Physics2D.Raycast(transform.position, Vector3.down, 0.1f))
         {
@@ -52,7 +53,7 @@ public class PlayerMove : MonoBehaviour
             Grounded = false;
         }
 
-        // Llamamos a la función del salto 
+        // Llamamos a la funciï¿½n del salto 
         if(Input.GetKeyDown(KeyCode.Space) && Grounded)
         {
             Jump();
@@ -100,10 +101,13 @@ public class PlayerMove : MonoBehaviour
 
     public void Hit()
     {
+        
         Health = Health - 1;
         if(Health == 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("SampleScene");
+            Score.scoreValue = 0;
         }
     }
 }

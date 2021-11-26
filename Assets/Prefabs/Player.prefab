@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6047428927542205621}
   - component: {fileID: 6047428927542205617}
   - component: {fileID: 6047428927542205616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,8 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87829436d8d33c344a7d123ab28db1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
   BulletPrefab: {fileID: 228920207898909118, guid: 439ba18257e059947a9361b79550b19e, type: 3}
-  Jumpforce: 1
+  Jumpforce: 0.95
   Speed: 150
 --- !u!95 &6047428927542205616
 Animator:

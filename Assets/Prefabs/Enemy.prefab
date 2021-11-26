@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 185796377230845494}
   - component: {fileID: 185796377230845481}
   - component: {fileID: 185796377230845480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185796377230845483}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.959, y: -1.714, z: 0}
+  m_LocalPosition: {x: 0, y: -1.977, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!70 &185796377230845481
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.02604936, y: 0}
@@ -155,5 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a65627194cc6e41852603e86f98d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletP: {fileID: 228920207898909118, guid: 439ba18257e059947a9361b79550b19e, type: 3}
+  BulletP: {fileID: 228920207898909118, guid: 4709d5752bbd04446984dd722285633a, type: 3}
   Player: {fileID: 6047428927542205626, guid: dadb30898363e024d9f7d993a13d17f0, type: 3}
+  Health: 2
+  rayDistance: 1.9
+  rayColor: {r: 0.9339623, g: 0.047579136, b: 0.047579136, a: 0.98039216}
+  layer:
+    serializedVersion: 2
+    m_Bits: 64

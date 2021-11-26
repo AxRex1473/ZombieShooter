@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     LayerMask layer;
     Bullet currentBullet;
+ 
 
 
     void Awake()
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+
         if(!Player)
         {
             return;  
@@ -77,10 +80,12 @@ public class Enemy : MonoBehaviour
 
     public void Hit()
     {
+        
         Health = Health - 1;
         if (Health == 0)
         {
             Destroy(gameObject);
+            Score.scoreValue += 1;
         }
     }
 
