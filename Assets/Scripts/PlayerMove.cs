@@ -106,7 +106,7 @@ public class PlayerMove : MonoBehaviour
         if(Health == 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Score");
             Score.scoreValue = 0;
         }
     }

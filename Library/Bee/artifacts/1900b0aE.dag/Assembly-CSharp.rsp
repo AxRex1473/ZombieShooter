@@ -344,6 +344,7 @@
 "Assets/Scripts/Creator_Zombies.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/FallEnemy.cs"
+"Assets/Scripts/GameOver.cs"
 "Assets/Scripts/Menu.cs"
 "Assets/Scripts/PlayerMove.cs"
 "Assets/Scripts/Score.cs"

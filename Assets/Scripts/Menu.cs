@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void LoadSceneMode()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Juego");
     }
 
     public void LoadSceneMode1()
