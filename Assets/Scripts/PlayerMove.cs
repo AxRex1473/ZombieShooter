@@ -106,8 +106,8 @@ public class PlayerMove : MonoBehaviour
         if(Health == 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene("Score");
-            Score.scoreValue = 0;
+            SceneManager.LoadScene("GameOver");
+            //Score.scoreValue = 0;
         }
     }
 }
